@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         rotationalServiceIntent = Intent(this, SensorService::class.java)
         rotationalServiceConnection = object : ServiceConnection {
             override fun onServiceConnected(componentName: ComponentName?, binder: IBinder?) {
-                val orientationInterface = RotationalDataInterface.Stub.asInterface(binder)
+                val orientationInterface = RotationAIDLInterface.Stub.asInterface(binder)
                 sensorDataText.text = orientationInterface?.rotationalData
                 isServiceConnected = true
                 updateButtonText()

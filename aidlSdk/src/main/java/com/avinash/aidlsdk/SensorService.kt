@@ -12,7 +12,6 @@ import androidx.lifecycle.MutableLiveData
 class SensorService : LifecycleService(), SensorEventListener {
 
     companion object {
-        //Live data that exposes
         val sensorData = MutableLiveData<FloatArray>()
         private const val SENSOR_DELAY = 8 * 1000 // 8ms
     }
@@ -25,7 +24,7 @@ class SensorService : LifecycleService(), SensorEventListener {
      * and implements methods from the AIDL interface.
      * This extends the Stub class and implements the methods.
      */
-    private val myBinder: RotationalDataInterface.Stub = object : RotationalDataInterface.Stub() {
+    private val myBinder: RotationAIDLInterface.Stub = object : RotationAIDLInterface.Stub() {
         override fun getRotationalData(): String {
             createSensorManager()
             return "Fetching data from sensors"
